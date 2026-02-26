@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+recorder_new/__init__.py
+recorder_new/example.py
+recorder_new/frontend/build/bootstrap.min.css
+recorder_new/frontend/build/index.html
+recorder_new/frontend/build/assets/index-BjPA8Bci.js
+streamlit_recorder_new.egg-info/PKG-INFO
+streamlit_recorder_new.egg-info/SOURCES.txt
+streamlit_recorder_new.egg-info/dependency_links.txt
+streamlit_recorder_new.egg-info/requires.txt
+streamlit_recorder_new.egg-info/top_level.txt
