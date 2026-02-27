@@ -144,9 +144,12 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
 
 
   // Extract custom arguments passed from Python
-  const { name } = args
-  const { greetings } = args
-  const { options } = args
+  //const { name } = args
+  //const { greetings } = args
+  //const { options } = args
+  const {text_on_the_component} = args
+  const {max_recording_time} = args
+  const {press_to_finish} = args
 
 
   // Component state
@@ -213,53 +216,9 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
     setIsFocused(false)
   }, [])
 
-  const marks = [
-    {
-      value: 0,
-      label: '0°C',
-    },
-    {
-      value: 20,
-      label: '20°C',
-    },
-    {
-      value: 37,
-      label: '37°C',
-    },
-    {
-      value: 100,
-      label: '100°C',
-    },
-  ];
+  
 
-
-
-  function valuetext(value: number) {
-    return `${value}°C`;
-  }
-
-
-
-  const MySlider = styled(Slider)({
-    margin: "50px 100px",
-
-
-
-  });
-
-  const MyBox = styled(Box)({
-    margin: "100px 200px",
-
-
-  });
-
-  function createMarks(labels: string[]): any[] {
-    return labels.map((label, index) => {
-      return { value: index, label }
-    })
-  }
-
-  const option = ["luca", "franco", "carmelo", "jova", "valerossi"]
+ 
 
   const [seconds, setSeconds] = useState(0)
   const timerRef = useRef<number | null>(null)
@@ -278,7 +237,7 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
   }
 
   useEffect(() => {
-    if (recording && seconds >= 32) {
+    if (recording && seconds >= max_recording_time) {
       handleStop()
     }
   }, [recording, seconds])
@@ -329,10 +288,10 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
 
       <Box sx={{ minWidth: 180, lineHeight: 1.1 }}>
         <Typography sx={{ fontSize: 12, color: theme?.textColor ?? "#262730" }}>
-          {recording ? "Recording…" : "Click to record"}
+          {recording ? "Recording…" : text_on_the_component}
         </Typography>
         <Typography sx={{ fontSize: 11, opacity: 0.7, color: theme?.textColor ?? "#262730" }}>
-          {recording ? "Press stop to finish" : "WAV • mono"}
+          {recording ? press_to_finish : "WAV • mono"}
         </Typography>
       </Box>
 
@@ -352,8 +311,11 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
         {seconds}s
       </Box>
 
-     
+   
     </Box>
+    
+    
+    
 
   )
 }

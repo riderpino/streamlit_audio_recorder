@@ -21,24 +21,25 @@ else:
 
 
 
-
-def recorder_new( options, name = "Streamlit", key = None): 
-    return _recorder_new(options =options, name=name, default=None, key = key)
-
-ai = ["luca", "franco", "carmesslo", "jova", "valerossi"]
-
-return_value = recorder_new( options=ai,name="lorenzo")
-
-if isinstance(return_value, dict) and "wav_base64" in return_value:
-    wav_bytes = base64.b64decode(return_value["wav_base64"])
-    st.audio(wav_bytes, format="audio/wav")   
-    with open("recording.wav", "wb") as f:
-        f.write(wav_bytes)
-        st.success("Saved recording.wav")
+def recorder_new( text_on_the_component = "Press to start the recording",max_recording_time = 32, press_to_finish = "press to finish", key = None): 
+    return _recorder_new(text_on_the_component = text_on_the_component, max_recording_time = max_recording_time, press_to_finish = press_to_finish, key = key)
 
 
-else:
-    st.write("selected value is: null")
+
+if not _RELEASE:
+
+    options= "test name"
+    return_value = recorder_new()
+
+    if isinstance(return_value, dict) and "wav_base64" in return_value:
+        wav_bytes = base64.b64decode(return_value["wav_base64"])
+        with open("audio_recording_not_release.wav", "wb") as f:
+            f.write(wav_bytes)
+            st.success("audio_recording_not_release.wav")
+    
+     #st.audio(wav_bytes, format="audio/wav")   
+    
+
 
 
 
