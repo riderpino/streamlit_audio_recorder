@@ -7,10 +7,10 @@ long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
     name="streamlit-recorder-new",
-    version="0.0.1",
-    author="John Smith",
-    author_email="john@example.com",
-    description="Streamlit component that allows you to do X",
+    version="0.0.2",
+    author="Lorenzo Pengue",
+    author_email="penguel00@univie.ac.at",
+    description="Streamlit component that allows you to record audio ",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="",

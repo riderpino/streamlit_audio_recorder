@@ -22,8 +22,8 @@ else:
 
 
 
-def recorder_new( text_on_the_component = "Press to start the recording",max_recording_time = 32, press_to_finish = "press to finish", key = None): 
-    return _recorder_new(text_on_the_component = text_on_the_component, max_recording_time = max_recording_time, press_to_finish = press_to_finish, key = key)
+def recorder_new( text_on_the_component = "Tap to start the recording",max_recording_time = 32, press_to_finish = "Tap to finish", thank_you_message = "Audio recording saved!", key = None): 
+    return _recorder_new(text_on_the_component = text_on_the_component, max_recording_time = max_recording_time, press_to_finish = press_to_finish, thank_you_message = thank_you_message, key = key)
 
 
 

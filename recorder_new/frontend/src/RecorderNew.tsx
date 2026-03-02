@@ -147,9 +147,10 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
   //const { name } = args
   //const { greetings } = args
   //const { options } = args
-  const {text_on_the_component} = args
-  const {max_recording_time} = args
-  const {press_to_finish} = args
+  const { text_on_the_component } = args
+  const { max_recording_time } = args
+  const { press_to_finish } = args
+  const { thank_you_message } = args
 
 
   // Component state
@@ -216,9 +217,9 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
     setIsFocused(false)
   }, [])
 
-  
 
- 
+
+
 
   const [seconds, setSeconds] = useState(0)
   const timerRef = useRef<number | null>(null)
@@ -287,12 +288,24 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
       </IconButton>
 
       <Box sx={{ minWidth: 180, lineHeight: 1.1 }}>
+        {audioURL && !recording && (
+          <Typography sx={{  fontSize: 13, color: "#008000", fontWeight: 700 }}>
+            {thank_you_message}
+          </Typography>
+        )}
         <Typography sx={{ fontSize: 12, color: theme?.textColor ?? "#262730" }}>
           {recording ? "Recording…" : text_on_the_component}
         </Typography>
-        <Typography sx={{ fontSize: 11, opacity: 0.7, color: theme?.textColor ?? "#262730" }}>
-          {recording ? press_to_finish : "WAV • mono"}
-        </Typography>
+
+        {!audioURL && (
+          <Typography sx={{ fontSize: 11, opacity: 0.7, color: theme?.textColor ?? "#262730" }}>
+            {recording ? press_to_finish : "WAV • mono"}
+          </Typography>
+
+
+        )}
+
+
       </Box>
 
       <Box
@@ -311,11 +324,11 @@ function RecorderNew({ args, disabled, theme }: ComponentProps): ReactElement {
         {seconds}s
       </Box>
 
-   
+
     </Box>
-    
-    
-    
+
+
+
 
   )
 }
