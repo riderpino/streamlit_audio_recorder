@@ -10,6 +10,7 @@ if _RELEASE:
     build_dir = os.path.join(root_dir, "frontend/build")
 
     _recorder_new = components.declare_component(
+         
         "recorder_new",
         path=build_dir
     )
